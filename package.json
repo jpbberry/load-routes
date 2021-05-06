@@ -1,5 +1,5 @@
 {
-  "name": "@jpbberry/route-loader",
+  "name": "@jpbberry/load-routes",
   "version": "1.0.0",
   "description": "A package dedicated to loading routes dynamically",
   "main": "dist/LoadRoutes.js",
