@@ -1,0 +1,29 @@
+{
+  "name": "@jpbberry/route-loader",
+  "version": "1.0.0",
+  "description": "A package dedicated to loading routes dynamically",
+  "main": "dist/LoadRoutes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpbberry/load-routes.git"
+  },
+  "keywords": [
+    "express",
+    "routes",
+    "router",
+    "dynamic"
+  ],
+  "author": "JPBBerry",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpbberry/load-routes"
+  },
+  "homepage": "https://github.com/jpbberry/load-routes#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "types": "./dist/LoadRoutes.d.ts"
+}
