@@ -1,6 +1,6 @@
 {
   "name": "@jpbberry/load-routes",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A package dedicated to loading routes dynamically",
   "main": "dist/LoadRoutes.js",
   "scripts": {
@@ -25,5 +25,8 @@
   "dependencies": {
     "express": "^4.17.1"
   },
-  "types": "./dist/LoadRoutes.d.ts"
+  "types": "./dist/LoadRoutes.d.ts",
+  "devDependencies": {
+    "@types/express": "^4.17.11"
+  }
 }

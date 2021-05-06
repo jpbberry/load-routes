@@ -2,7 +2,7 @@ import Path from 'path'
 import { Application, Router } from 'express'
 import { readdirSync, lstatSync, existsSync } from 'fs'
 
-function createRouter () {
+function createRouter (): Router {
   const router = Router({ mergeParams: true })
 
   return router
@@ -21,8 +21,8 @@ function getFile (path: string): (router: Router) => void {
  * @param dir Directory of routes to load
  * @param bind An optional this bind, that would be turned into `this` in every router function
  */
-export function LoadRoutes (app: Application, dir: string, bind = global): void {
-  const loadFolder = (path, parent) => {
+export function LoadRoutes (app: Application|Router, dir: string, bind: any = global): void {
+  const loadFolder = (path: string, parent: Application|Router) => {
     let routes = readdirSync(Path.resolve(path))
     if (routes.includes('index.js')) {
       routes = routes.filter(x => x !== 'index.js')
@@ -39,7 +39,7 @@ export function LoadRoutes (app: Application, dir: string, bind = global): void 
 
         loadFolder(path + '/' + route, router)
 
-        return parent.use(`/${route}`, router)
+        return parent.use(`/${route}`, router as unknown as Application)
       }
 
       if (!route.endsWith('.js')) return
@@ -55,12 +55,12 @@ export function LoadRoutes (app: Application, dir: string, bind = global): void 
 
       routeFile.bind(bind)(router)
 
-      parent.use(`/${routeName}`, router)
+      parent.use(`/${routeName}`, router as unknown as Application)
     })
   }
   const baseRouter = createRouter()
 
   loadFolder(Path.resolve(dir), baseRouter)
 
-  app.use('/', baseRouter)
+  app.use('/', baseRouter as unknown as Application)
 }
